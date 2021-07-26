@@ -35,9 +35,9 @@ class LBXScanLineAnimation: UIImageView {
         frame.origin.y -= hImg
         frame.size.height = hImg
         self.frame = frame
-        alpha = 0.0
+        alpha = 1.0
 
-        UIView.animate(withDuration: 1.4, animations: {
+        UIView.animate(withDuration: 2.8, delay: 0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
             self.alpha = 1.0
             var frame = self.animationRect
             let hImg = self.image!.size.height * self.animationRect.size.width / self.image!.size.width

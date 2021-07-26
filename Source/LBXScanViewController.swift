@@ -46,6 +46,9 @@ open class LBXScanViewController: UIViewController {
     // 相机启动提示文字
     public var readyString: String! = "loading"
 
+    // 延迟准备时间
+    public var afterDelay = 0.3
+    
     open override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -68,7 +71,7 @@ open class LBXScanViewController: UIViewController {
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         drawScanView()
-        perform(#selector(LBXScanViewController.startScan), with: nil, afterDelay: 0.3)
+        perform(#selector(LBXScanViewController.startScan), with: nil, afterDelay: afterDelay)
     }
 
     @objc open func startScan() {
@@ -119,7 +122,10 @@ open class LBXScanViewController: UIViewController {
             view.addSubview(qRScanView!)
             delegate?.drawwed()
         }
-        qRScanView?.deviceStartReadying(readyStr: readyString)
+        
+        if afterDelay != 0 {
+            qRScanView?.deviceStartReadying(readyStr: readyString)
+        }
     }
    
 
