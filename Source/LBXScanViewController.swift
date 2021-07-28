@@ -68,7 +68,7 @@ open class LBXScanViewController: UIViewController {
         isOpenInterestRect = isOpen
     }
 
-    open override func viewDidAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         drawScanView()
         perform(#selector(LBXScanViewController.startScan), with: nil, afterDelay: afterDelay)
